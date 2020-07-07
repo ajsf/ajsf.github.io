@@ -1,0 +1,6 @@
+{
+  "name": "LightningRendererPOC",
+  "identifier": "tv.freewheel",
+  "version": "1.0.0",
+  "icon": "./static/icon.png"
+}
