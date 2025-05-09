@@ -35,7 +35,7 @@ function getRandomInt(min, max) {
 }
 
 function getRandomDollarAmount() {
-	const digits = skewedRandom(4);
+	const digits = skewedRandom(5);
 	const max = Math.pow(10, digits) - 1;
 	const euros = getRandomInt(1, max);
 	const cents = getRandomInt(0, 99);
