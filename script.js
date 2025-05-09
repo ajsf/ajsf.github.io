@@ -1,7 +1,6 @@
 const synth = window.speechSynthesis;
 
 const inputTxt = document.querySelector(".txt");
-
 const playButton = document.querySelector("#play");
 const checkButton = document.querySelector("#check");
 
@@ -18,8 +17,6 @@ function populateVoiceList() {
 }
 
 function getRandomVoice() {
-	console.log("get random voice")
-	console.log(voices);
 	const randomIndex = Math.floor(Math.random() * voices.length);
 	return voices[randomIndex];
 }
@@ -38,7 +35,6 @@ function getRandomInt(min, max) {
 }
 
 function getRandomDollarAmount() {
-	console.log("AA")
 	const digits = skewedRandom(4);
 	const max = Math.pow(10, digits) - 1;
 	const euros = getRandomInt(1, max);
@@ -63,7 +59,7 @@ function getText(euros, cents) {
 }
 
 function speak() {
-	console.log("============ speak", utterThis);
+	console.log("speak", utterThis);
 	console.log(synth);
 	if (synth.speaking) {
 		console.error("speechSynthesis.speaking");
@@ -84,7 +80,7 @@ play.onclick = function (event) {
 };
 
 checkButton.onclick = function () {
-	console.log("checks.onclick");
+	console.log("checkButton.onclick");
 	if (inputTxt.value == amt.total) {
 		alert("Correct!!");
 		inputTxt.value = '';
@@ -95,7 +91,7 @@ checkButton.onclick = function () {
 }
 
 function getUtterance() {
-	console.log("efgegeg=======")
+	console.log("getUtterance");
 	utterThis = new SpeechSynthesisUtterance(amt.text);
 
 	utterThis.onend = function (event) {
@@ -114,7 +110,7 @@ function getUtterance() {
 }
 
 function setup() {
-	console.log("AAA --- setup");
+	console.log("setup");
 	amt = getRandomDollarAmount();
 	utterThis = getUtterance()
 	speak();
@@ -125,8 +121,10 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 }
 
 function onVoicesChanged() {
-	console.log("voices changed ========")
+	console.log("voices changed");
 	populateVoiceList();
 	setup();
 }
+
+synth.getVoices();
  
